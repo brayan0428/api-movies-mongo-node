@@ -3,7 +3,9 @@ const app = express();
 const { config } = require('./config/index');
 const moviesApi = require('./routes/movies');
 const userMoviesApi = require('./routes/userMovies');
-
+const authApi = require('./routes/auth')
+const passport = require('passport')
+require('./utils/auth/strategies/jwt')
 const {
   logErrors,
   wrapErrors,
@@ -12,9 +14,13 @@ const {
 const notFoundHandler = require('./utils/middleware/notFoundHandler');
 const cors = require('cors');
 
-app.use(cors);
+//app.use(cors);
 app.use(express.json());
 
+authApi(app)
+
+//Middleware JWT
+app.use(passport.authenticate('jwt' ,{session:false}))
 moviesApi(app);
 userMoviesApi(app);
 

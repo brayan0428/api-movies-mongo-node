@@ -9,7 +9,7 @@ const validationHandler = require('../utils/middleware/validationHandler');
 
 function UserMoviesApi(app) {
   const router = express.Router();
-  app.use(router, '/api/user-movies');
+  app.use('/api/user-movies',router);
 
   const userMoviesService = new UserMoviesService();
 

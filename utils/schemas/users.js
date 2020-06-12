@@ -9,7 +9,7 @@ const createUserSchema = {
   isAdmin: joi.boolean(),
 }
 
-module.exports : {
+module.exports = {
   userIdSchema,
   createUserSchema
 }
